@@ -128,9 +128,7 @@ trustlayer-ai/
 ## Installation
 
 ```bash
-git clone https://github.com/ajittgosavii/trustlayer-ai.git
-cd trustlayer-ai
-pip install -r requirements.txt
+
 ```
 
 Copy the secrets template and add your API keys:
