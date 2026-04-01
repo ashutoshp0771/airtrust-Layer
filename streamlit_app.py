@@ -986,7 +986,7 @@ with tab_detect:
                     return ""
 
                 st.dataframe(
-                    df_delta.style.applymap(color_delta, subset=["Agreement"]),
+                    df_delta.style.map(color_delta, subset=["Agreement"]),
                     use_container_width=True,
                     hide_index=True,
                 )
@@ -1132,7 +1132,7 @@ with tab_detect:
                     return "background-color:#DCFCE7;color:#166534"
 
                 st.dataframe(
-                    df.style.applymap(color_risk, subset=["Risk"]),
+                    df.style.map(color_risk, subset=["Risk"]),
                     use_container_width=True,
                     hide_index=True,
                 )
@@ -1215,7 +1215,7 @@ with tab_history:
             return "background-color:#DCFCE7;color:#166534;font-weight:700"
 
         st.dataframe(
-            df_hist.style.applymap(color_action, subset=["action"]),
+            df_hist.style.map(color_action, subset=["action"]),
             use_container_width=True,
             hide_index=True,
         )
@@ -1353,7 +1353,7 @@ with tab_batch:
                 return "background-color:#F1F5F9;color:#64748B"
 
             st.dataframe(
-                df_batch.style.applymap(color_batch_action, subset=["Action"]),
+                df_batch.style.map(color_batch_action, subset=["Action"]),
                 use_container_width=True,
                 hide_index=True,
             )
