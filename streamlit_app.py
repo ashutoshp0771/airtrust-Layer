@@ -48,7 +48,44 @@ st.markdown("""
 }
 
 .stApp { background: var(--bg); font-family: 'Plus Jakarta Sans', sans-serif; }
-#MainMenu, footer, header { visibility: hidden; }
+#MainMenu, footer, [data-testid="stHeader"] { visibility: hidden; }
+
+/* ── Tab styling — ensure tabs are always visible ── */
+button[data-baseweb="tab"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--gray) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.92rem !important;
+    padding: 10px 20px !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+button[data-baseweb="tab"]:hover {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
+    font-weight: 700 !important;
+}
+[data-baseweb="tab-list"] {
+    gap: 0 !important;
+    border-bottom: 1px solid var(--border) !important;
+    background: transparent !important;
+}
+[data-baseweb="tab-panel"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding-top: 16px !important;
+}
+[data-baseweb="tab-highlight"] {
+    background-color: var(--primary) !important;
+}
 
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
@@ -2168,7 +2205,7 @@ with tab_review:
 
             df_audit = pd.DataFrame(st.session_state.audit_log)
             st.dataframe(
-                df_audit.style.applymap(_color_audit, subset=["reviewer_action"]),
+                df_audit.style.map(_color_audit, subset=["reviewer_action"]),
                 use_container_width=True,
                 hide_index=True,
             )
@@ -2236,7 +2273,7 @@ with tab_howto:
         return "color:#991B1B;font-weight:700"
 
     st.dataframe(
-        df_tech.style.applymap(color_acc, subset=["Accuracy"]),
+        df_tech.style.map(color_acc, subset=["Accuracy"]),
         use_container_width=True,
         hide_index=True,
     )
