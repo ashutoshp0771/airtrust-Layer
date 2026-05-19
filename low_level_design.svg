@@ -1,0 +1,420 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" width="1200" height="1020">
+  <defs>
+    <marker id="ac" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#22d3ee"/>
+    </marker>
+    <marker id="ag" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#34d399"/>
+    </marker>
+    <marker id="ap" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#a78bfa"/>
+    </marker>
+    <marker id="ao" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#fbbf24"/>
+    </marker>
+    <marker id="as" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1020" fill="#060b18"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="1200" height="60" fill="#09111f"/>
+  <rect x="0" y="58" width="1200" height="2" fill="#0e7490" opacity="0.6"/>
+  <text x="600" y="27" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#f1f5f9" text-anchor="middle">DB Perf AI Agent — Low Level Design</text>
+  <text x="600" y="48" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Component architecture · Data flow · API contracts · State management · Agent pipeline internals · DB Connector · ServiceNow KB</text>
+
+  <!-- Column labels -->
+  <text x="200" y="82" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#0891b2" text-anchor="middle" letter-spacing="1.5">FRONTEND (React JSX)</text>
+  <text x="598" y="82" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle" letter-spacing="1.5">API CONTRACTS</text>
+  <text x="970" y="82" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#14b8a6" text-anchor="middle" letter-spacing="1.5">BACKEND (FastAPI + LangGraph)</text>
+
+  <!-- Column dividers -->
+  <line x1="405" y1="65" x2="405" y2="1015" stroke="#0e2030" stroke-width="1" stroke-dasharray="4,5"/>
+  <line x1="795" y1="65" x2="795" y2="1015" stroke="#0e2030" stroke-width="1" stroke-dasharray="4,5"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- FRONTEND COLUMN -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <!-- App.jsx -->
+  <rect x="15" y="92" width="374" height="54" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="2"/>
+  <text x="202" y="115" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#22d3ee" text-anchor="middle">App.jsx</text>
+  <text x="202" y="134" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#0e7490" text-anchor="middle">Mode toggle (dp:mode localStorage) · JWT session · Nav routing</text>
+
+  <!-- Tree connector from App -->
+  <line x1="202" y1="146" x2="202" y2="164" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="65" y1="164" x2="350" y2="164" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="65" y1="164" x2="65" y2="178" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="202" y1="164" x2="202" y2="178" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="350" y1="164" x2="350" y2="178" stroke="#1e3a4a" stroke-width="1.5"/>
+
+  <!-- LoginPage -->
+  <rect x="15" y="178" width="96" height="36" fill="#0c1525" rx="6" stroke="#334155" stroke-width="1"/>
+  <text x="63" y="196" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="middle">LoginPage</text>
+  <text x="63" y="210" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#475569" text-anchor="middle">JWT · bcrypt</text>
+
+  <!-- DashboardPage -->
+  <rect x="155" y="178" width="94" height="36" fill="#0c1525" rx="6" stroke="#334155" stroke-width="1"/>
+  <text x="202" y="196" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="middle">Dashboard</text>
+  <text x="202" y="210" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#475569" text-anchor="middle">Stats · sessions</text>
+
+  <!-- TriagePage (main) -->
+  <rect x="303" y="178" width="86" height="36" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="346" y="196" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#22d3ee" text-anchor="middle">TriagePage</text>
+  <text x="346" y="210" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#0e7490" text-anchor="middle">Phase FSM</text>
+
+  <!-- Tree from TriagePage -->
+  <line x1="346" y1="214" x2="346" y2="236" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="60" y1="236" x2="380" y2="236" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="60" y1="236" x2="60" y2="252" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="160" y1="236" x2="160" y2="252" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="260" y1="236" x2="260" y2="252" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="346" y1="236" x2="346" y2="252" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="380" y1="236" x2="380" y2="252" stroke="#1e3a4a" stroke-width="1.5"/>
+
+  <!-- UploadPanel -->
+  <rect x="15" y="252" width="90" height="52" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="60" y="271" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#22d3ee" text-anchor="middle">UploadPanel</text>
+  <text x="60" y="284" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">5 formats</text>
+  <text x="60" y="296" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">auto-detect</text>
+
+  <!-- StreamingProgress -->
+  <rect x="115" y="252" width="90" height="52" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="160" y="271" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">Streaming</text>
+  <text x="160" y="284" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">Progress</text>
+  <text x="160" y="296" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">SSE events</text>
+
+  <!-- QueryClassificationTable -->
+  <rect x="215" y="252" width="90" height="52" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="260" y="271" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">Query</text>
+  <text x="260" y="284" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">ClassTable</text>
+  <text x="260" y="296" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">rank+severity</text>
+
+  <!-- CommTemplatePanel -->
+  <rect x="350" y="252" width="43" height="52" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="372" y="269" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#22d3ee" text-anchor="middle">Comm</text>
+  <text x="372" y="281" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#22d3ee" text-anchor="middle">Panel</text>
+  <text x="372" y="295" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">4 tmpl</text>
+
+  <!-- RunbookViewer (special) -->
+  <rect x="15" y="322" width="200" height="116" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="115" y="343" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#22d3ee" text-anchor="middle">RunbookViewer.jsx</text>
+  <rect x="22" y="350" width="87" height="34" fill="#0c1a28" rx="5" stroke="#334155" stroke-width="1"/>
+  <text x="66" y="365" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#94a3b8" text-anchor="middle">Steps Tab</text>
+  <text x="66" y="378" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#475569" text-anchor="middle">AwsToolBadge</text>
+  <rect x="119" y="350" width="87" height="34" fill="#021a0e" rx="5" stroke="#059669" stroke-width="1"/>
+  <text x="163" y="365" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#34d399" text-anchor="middle">AI Chat Tab</text>
+  <text x="163" y="378" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#047857" text-anchor="middle">Live mode only</text>
+  <text x="115" y="400" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">AwsToolBadge colors:</text>
+  <text x="115" y="414" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">PI=orange · CW=blue · EM=purple · RDS=cyan</text>
+  <text x="115" y="428" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">QS=amber · AWR=red</text>
+
+  <!-- NEW: ConnectorPanel.jsx -->
+  <rect x="15" y="450" width="200" height="80" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="115" y="470" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle">ConnectorPanel.jsx</text>
+  <text x="115" y="486" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#0e7490" text-anchor="middle">DB credential form · memory-only</text>
+  <text x="115" y="499" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#0e7490" text-anchor="middle">ping test · Engine port defaults</text>
+  <text x="115" y="512" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">UNSUPPORTED: Oracle / SQL Server</text>
+  <text x="115" y="524" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">HITL modal before every SQL run</text>
+
+  <!-- NEW: DBACopilot.jsx -->
+  <rect x="225" y="450" width="164" height="80" fill="#021a0e" rx="8" stroke="#059669" stroke-width="1.5"/>
+  <text x="307" y="470" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">DBACopilot.jsx</text>
+  <text x="307" y="486" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#065f46" text-anchor="middle">Floating FAB · bottom-right z-50</text>
+  <text x="307" y="499" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#065f46" text-anchor="middle">animate-ping ring · 420px slide-in</text>
+  <text x="307" y="512" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#047857" text-anchor="middle">SSE streaming · AbortController</text>
+  <text x="307" y="524" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#047857" text-anchor="middle">stop · panel persist on toggle</text>
+
+  <!-- RunbookChat -->
+  <rect x="15" y="544" width="374" height="90" fill="#021a0e" rx="8" stroke="#059669" stroke-width="1.5"/>
+  <text x="202" y="565" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#34d399" text-anchor="middle">RunbookChat.jsx — DBA AI Chat (Live mode)</text>
+  <text x="202" y="582" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#065f46" text-anchor="middle">POST /api/runbook/chat → ReadableStream SSE → token chunks</text>
+  <text x="202" y="597" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#047857" text-anchor="middle">Message history (20 turns) · CodeBlock renderer · Quick-start chips</text>
+  <text x="202" y="611" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#047857" text-anchor="middle">Stop button (AbortController) · Auto-scroll · Textarea auto-resize</text>
+  <text x="202" y="625" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#064e3b" text-anchor="middle">Payload: session_id · query_rank · root_cause · message · history[]</text>
+
+  <!-- lib/authFetch + streamParse -->
+  <rect x="15" y="648" width="178" height="54" fill="#0c1525" rx="7" stroke="#1e3a5a" stroke-width="1"/>
+  <text x="104" y="667" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">lib/authFetch.js</text>
+  <text x="104" y="681" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">JWT Bearer injection</text>
+  <text x="104" y="694" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">401 → dp:unauthorized event</text>
+
+  <rect x="208" y="648" width="181" height="54" fill="#0c1525" rx="7" stroke="#1e3a5a" stroke-width="1"/>
+  <text x="298" y="667" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">lib/streamParse.js</text>
+  <text x="298" y="681" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">ReadableStream reader</text>
+  <text x="298" y="694" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">SSE line parser → callback(data)</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- API CONTRACTS COLUMN -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <!-- POST /api/triage/analyze -->
+  <rect x="416" y="92" width="368" height="110" fill="#091525" rx="8" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="600" y="113" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle">POST /api/triage/analyze</text>
+  <text x="600" y="129" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#0e7490" text-anchor="middle">StreamingResponse · text/event-stream</text>
+  <rect x="427" y="136" width="170" height="56" fill="#07111e" rx="5"/>
+  <text x="512" y="152" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Request body:</text>
+  <text x="512" y="167" font-family="monospace,Courier,sans-serif" font-size="10" fill="#34d399" text-anchor="middle">{ content: str,</text>
+  <text x="512" y="180" font-family="monospace,Courier,sans-serif" font-size="10" fill="#34d399" text-anchor="middle">  mock: bool }</text>
+  <rect x="606" y="136" width="167" height="56" fill="#07111e" rx="5"/>
+  <text x="690" y="152" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">SSE events:</text>
+  <text x="690" y="165" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">parse_complete</text>
+  <text x="690" y="178" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">classify_complete</text>
+  <text x="690" y="191" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">result | error</text>
+
+  <!-- POST /api/runbook/chat -->
+  <rect x="416" y="218" width="368" height="120" fill="#021a0e" rx="8" stroke="#059669" stroke-width="1.5"/>
+  <text x="600" y="239" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">POST /api/runbook/chat</text>
+  <text x="600" y="255" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#065f46" text-anchor="middle">StreamingResponse · text/event-stream (Live only)</text>
+  <rect x="427" y="262" width="170" height="66" fill="#011208" rx="5"/>
+  <text x="512" y="278" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">ChatRequest body:</text>
+  <text x="512" y="292" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">session_id: str</text>
+  <text x="512" y="304" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">query_rank: int</text>
+  <text x="512" y="316" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">root_cause: str</text>
+  <text x="512" y="328" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">message + history[]</text>
+  <rect x="606" y="262" width="167" height="66" fill="#011208" rx="5"/>
+  <text x="690" y="278" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">SSE tokens:</text>
+  <text x="690" y="292" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">{ token: "..." }</text>
+  <text x="690" y="306" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">{ done: true }</text>
+  <text x="690" y="320" font-family="monospace,Courier,sans-serif" font-size="9" fill="#34d399" text-anchor="middle">{ error: "..." }</text>
+  <text x="690" y="334" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#047857" text-anchor="middle">X-Accel-Buffering: no</text>
+
+  <!-- GET /api/samples -->
+  <rect x="416" y="354" width="368" height="60" fill="#0c1525" rx="8" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="375" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">GET /api/samples/ · GET /api/samples/{fname}</text>
+  <text x="600" y="392" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">5 samples: rds · awr · pg_stat · sqlserver · mariadb  |  Auth: Bearer JWT</text>
+  <text x="600" y="407" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">Returns: { filename, name, description, format, engine, content }</text>
+
+  <!-- POST /api/auth/login -->
+  <rect x="416" y="428" width="368" height="50" fill="#0c1525" rx="8" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="449" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">POST /api/auth/login</text>
+  <text x="600" y="467" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">{ username, password } → { token, user }  ·  JWT HS256 · 24h expiry</text>
+
+  <!-- NEW: POST /api/connector/ping -->
+  <rect x="416" y="492" width="368" height="90" fill="#061420" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="600" y="513" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle">POST /api/connector/ping</text>
+  <rect x="427" y="520" width="168" height="52" fill="#03090f" rx="5"/>
+  <text x="511" y="537" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Request:</text>
+  <text x="511" y="551" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">{ engine, host, port,</text>
+  <text x="511" y="564" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">database, username, password }</text>
+  <rect x="604" y="520" width="169" height="52" fill="#03090f" rx="5"/>
+  <text x="689" y="537" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Response / Security:</text>
+  <text x="689" y="551" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">{ ok: true, message: "..." }</text>
+  <text x="689" y="564" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0891b2" text-anchor="middle">pwd scrubbed from errors</text>
+
+  <!-- NEW: POST /api/connector/execute -->
+  <rect x="416" y="596" width="368" height="96" fill="#061420" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="600" y="617" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle">POST /api/connector/execute</text>
+  <rect x="427" y="624" width="168" height="58" fill="#03090f" rx="5"/>
+  <text x="511" y="641" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Request:</text>
+  <text x="511" y="655" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">ConnRequest + { sql: str }</text>
+  <text x="511" y="668" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">HITL-confirmed before send</text>
+  <text x="511" y="679" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">(modal confirm required)</text>
+  <rect x="604" y="624" width="169" height="58" fill="#03090f" rx="5"/>
+  <text x="689" y="641" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Response / Security:</text>
+  <text x="689" y="655" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">{ ok, columns[], rows[],</text>
+  <text x="689" y="668" font-family="monospace,Courier,sans-serif" font-size="9" fill="#22d3ee" text-anchor="middle">  row_count }</text>
+  <text x="689" y="679" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0891b2" text-anchor="middle">allowlist+blocklist · 200 rows</text>
+
+  <!-- NEW: POST /api/servicenow/publish-kb -->
+  <rect x="416" y="706" width="368" height="106" fill="#0e0620" rx="8" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="600" y="727" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#a78bfa" text-anchor="middle">POST /api/servicenow/publish-kb</text>
+  <rect x="427" y="734" width="168" height="68" fill="#0a0415" rx="5"/>
+  <text x="511" y="751" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Request:</text>
+  <text x="511" y="765" font-family="monospace,Courier,sans-serif" font-size="8" fill="#a78bfa" text-anchor="middle">snow_instance, snow_username</text>
+  <text x="511" y="777" font-family="monospace,Courier,sans-serif" font-size="8" fill="#a78bfa" text-anchor="middle">snow_password, db_name</text>
+  <text x="511" y="789" font-family="monospace,Courier,sans-serif" font-size="8" fill="#a78bfa" text-anchor="middle">db_engine, session_id</text>
+  <text x="511" y="800" font-family="monospace,Courier,sans-serif" font-size="8" fill="#a78bfa" text-anchor="middle">root_cause, severity, sql_text</text>
+  <rect x="604" y="734" width="169" height="68" fill="#0a0415" rx="5"/>
+  <text x="689" y="751" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle">Response / Note:</text>
+  <text x="689" y="765" font-family="monospace,Courier,sans-serif" font-size="9" fill="#a78bfa" text-anchor="middle">{ ok, sys_id, number,</text>
+  <text x="689" y="778" font-family="monospace,Courier,sans-serif" font-size="9" fill="#a78bfa" text-anchor="middle">  article_url }</text>
+  <text x="689" y="791" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#7c3aed" text-anchor="middle">Draft state · 2yr valid_to</text>
+  <text x="689" y="803" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#6d28d9" text-anchor="middle">password scrubbed</text>
+
+  <!-- TriageState TypedDict -->
+  <rect x="416" y="826" width="368" height="178" fill="#100a25" rx="8" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="600" y="847" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#a78bfa" text-anchor="middle">TriageState (LangGraph TypedDict)</text>
+  <text x="600" y="862" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#6d28d9" text-anchor="middle">Shared state object passed through all pipeline nodes</text>
+  <line x1="426" y1="866" x2="774" y2="866" stroke="#2e1065" stroke-width="1"/>
+  <text x="503" y="881" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">raw_input: str</text>
+  <text x="503" y="895" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">source_format: str</text>
+  <text x="503" y="909" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">db_engine: str</text>
+  <text x="503" y="923" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">session_id: str</text>
+  <text x="503" y="937" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">mock_mode: bool</text>
+  <text x="503" y="951" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">parsed_queries: List</text>
+  <text x="503" y="965" font-family="monospace,Courier,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">parse_error: Optional</text>
+  <text x="698" y="881" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">classified_queries</text>
+  <text x="698" y="895" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">classification_error</text>
+  <text x="698" y="909" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">overall_severity</text>
+  <text x="698" y="923" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">top_root_causes</text>
+  <text x="698" y="937" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">runbooks: dict</text>
+  <text x="698" y="951" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">comm_templates: List</text>
+  <text x="698" y="965" font-family="monospace,Courier,sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">completed: bool</text>
+  <line x1="600" y1="867" x2="600" y2="978" stroke="#2e1065" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- BACKEND COLUMN -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <!-- main.py / FastAPI (updated with 6 routers) -->
+  <rect x="806" y="92" width="378" height="60" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="2"/>
+  <text x="995" y="116" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#22d3ee" text-anchor="middle">main.py — FastAPI app</text>
+  <text x="995" y="135" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#0e7490" text-anchor="middle">CORS · lifespan(init_db) · 6 routers: auth · triage · samples · chat · connector · servicenow</text>
+
+  <!-- API routers (6) -->
+  <line x1="995" y1="152" x2="995" y2="170" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="828" y1="170" x2="1174" y2="170" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="828" y1="170" x2="828" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="896" y1="170" x2="896" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="964" y1="170" x2="964" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="1032" y1="170" x2="1032" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="1100" y1="170" x2="1100" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+  <line x1="1174" y1="170" x2="1174" y2="184" stroke="#1e3a4a" stroke-width="1.5"/>
+
+  <rect x="806" y="184" width="76" height="38" fill="#0c1525" rx="6" stroke="#334155" stroke-width="1"/>
+  <text x="844" y="201" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">api/auth.py</text>
+  <text x="844" y="215" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">/api/auth/*</text>
+
+  <rect x="886" y="184" width="76" height="38" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1"/>
+  <text x="924" y="201" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">api/triage.py</text>
+  <text x="924" y="215" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">/api/triage/*</text>
+
+  <rect x="966" y="184" width="78" height="38" fill="#091c2e" rx="6" stroke="#0891b2" stroke-width="1"/>
+  <text x="1005" y="201" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#22d3ee" text-anchor="middle">api/samples</text>
+  <text x="1005" y="215" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">/api/samples/*</text>
+
+  <rect x="1048" y="184" width="68" height="38" fill="#021a0e" rx="6" stroke="#059669" stroke-width="1.5"/>
+  <text x="1082" y="201" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#34d399" text-anchor="middle">api/chat</text>
+  <text x="1082" y="215" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#047857" text-anchor="middle">/api/runbook</text>
+
+  <rect x="1120" y="184" width="62" height="38" fill="#061420" rx="6" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="1151" y="199" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#22d3ee" text-anchor="middle">api/conn</text>
+  <text x="1151" y="211" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#22d3ee" text-anchor="middle">ector.py</text>
+  <text x="1151" y="215" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="0" fill="#0e7490" text-anchor="middle">/connector</text>
+
+  <!-- connector label text below box -->
+  <text x="1151" y="226" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="8" fill="#0e7490" text-anchor="middle">/connector/*</text>
+
+  <rect x="1186" y="184" width="0" height="38" fill="#0e0620" rx="6" stroke="#7c3aed" stroke-width="0"/>
+  <!-- ServiceNow router - fits after connector, adjust x -->
+  <!-- Adjust: use x=1156 width=28 is too small, shift layout slightly for 6th router -->
+  <!-- Actually place 6th router below the tree with a different approach - shown inline -->
+
+  <!-- parser_node -->
+  <rect x="806" y="240" width="176" height="148" fill="#071a15" rx="8" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="894" y="261" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">parser_node.py</text>
+  <text x="894" y="277" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#14b8a6" text-anchor="middle">detect_format_and_engine()</text>
+  <line x1="816" y1="282" x2="972" y2="282" stroke="#0f3d36" stroke-width="1"/>
+  <text x="894" y="296" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">parse_rds_pi(data)</text>
+  <text x="894" y="310" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">parse_oracle_awr(text)</text>
+  <text x="894" y="324" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">parse_pg_stat_statements()</text>
+  <text x="894" y="338" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">parse_sqlserver_qs()</text>
+  <text x="894" y="352" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">parse_mysql_slow_log()</text>
+  <text x="894" y="366" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#134e4a" text-anchor="middle">→ List[ParsedQuery]</text>
+  <text x="894" y="380" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0f3d36" text-anchor="middle">sql_id · db_time_pct · wait_event</text>
+
+  <!-- classifier_node -->
+  <rect x="994" y="240" width="190" height="148" fill="#071a15" rx="8" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="1089" y="261" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">classifier_node.py</text>
+  <line x1="1004" y1="266" x2="1174" y2="266" stroke="#0f3d36" stroke-width="1"/>
+  <text x="1089" y="282" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#14b8a6" text-anchor="middle">_heuristic_classify(state)</text>
+  <text x="1089" y="296" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">MySQL: rows_examined, lock wait</text>
+  <text x="1089" y="309" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">PG: dead rows, blk reads</text>
+  <text x="1089" y="322" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">SQLServer: plan_count, PAGELATCH</text>
+  <text x="1089" y="335" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">Oracle: enq:TX, TABLE ACCESS FULL</text>
+  <line x1="1004" y1="341" x2="1174" y2="341" stroke="#0f3d36" stroke-width="1"/>
+  <text x="1089" y="355" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#34d399" text-anchor="middle">_ai_classify(state) — Live</text>
+  <text x="1089" y="369" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">GPT-4o · JSON mode · engine prompt</text>
+  <text x="1089" y="383" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#134e4a" text-anchor="middle">→ ClassifiedQuery[] + overall_severity</text>
+
+  <!-- runbook_node -->
+  <rect x="806" y="402" width="378" height="152" fill="#071a15" rx="8" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="995" y="422" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">runbook_node.py</text>
+  <line x1="816" y1="428" x2="1174" y2="428" stroke="#0f3d36" stroke-width="1"/>
+  <text x="900" y="444" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#14b8a6" text-anchor="middle">Demo path</text>
+  <text x="900" y="458" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">_DEMO_RUNBOOKS dict</text>
+  <text x="900" y="471" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">missing_index (4 engines)</text>
+  <text x="900" y="484" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">lock_contention (2 engines)</text>
+  <text x="900" y="497" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">vacuum_bloat, param_sniff...</text>
+  <text x="900" y="510" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">_AWS_TOOLS per engine</text>
+  <line x1="995" y1="428" x2="995" y2="544" stroke="#0f3d36" stroke-width="1"/>
+  <text x="1089" y="444" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" font-weight="600" fill="#34d399" text-anchor="middle">Live path</text>
+  <text x="1089" y="458" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">_ai_runbook(state)</text>
+  <text x="1089" y="471" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">asyncio.gather() concurrent</text>
+  <text x="1089" y="484" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">1 GPT-4o call per root cause</text>
+  <text x="1089" y="497" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">_runbook_system(db_engine)</text>
+  <text x="1089" y="510" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2dd4bf" text-anchor="middle">comm_templates GPT-4o call</text>
+  <text x="995" y="530" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#134e4a" text-anchor="middle">→ runbooks: {root_cause: {steps: [RunbookStep]}}  +  comm_templates</text>
+  <text x="995" y="545" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0f3d36" text-anchor="middle">RunbookStep: step_num · title · description · diagnostic_sql · aws_tool · tool_path</text>
+
+  <!-- chat_agent.py -->
+  <rect x="806" y="568" width="378" height="90" fill="#021a0e" rx="8" stroke="#059669" stroke-width="1.5"/>
+  <text x="995" y="590" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#34d399" text-anchor="middle">chat_agent.py — DBA Chat</text>
+  <line x1="816" y1="595" x2="1174" y2="595" stroke="#052e16" stroke-width="1"/>
+  <text x="995" y="611" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#065f46" text-anchor="middle">stream_chat(context, history, user_message) → AsyncIterator[str]</text>
+  <text x="995" y="627" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#047857" text-anchor="middle">System prompt: db_engine · db_name · query SQL/waits · root_cause · runbook steps</text>
+  <text x="995" y="641" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#047857" text-anchor="middle">GPT-4o · temp=0.2 · max_tokens=1500 · history last 20 turns</text>
+  <text x="995" y="654" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#064e3b" text-anchor="middle">Engine-specific tools: PI/AWR/QS/pg_stat/slow_log context injected</text>
+
+  <!-- NEW: api/connector.py -->
+  <rect x="806" y="672" width="378" height="90" fill="#061420" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="995" y="693" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#22d3ee" text-anchor="middle">api/connector.py</text>
+  <line x1="816" y1="698" x2="1174" y2="698" stroke="#0e3a5a" stroke-width="1"/>
+  <text x="995" y="714" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#0e7490" text-anchor="middle">_validate_sql() allowlist · _DANGER_RE blocklist</text>
+  <text x="995" y="728" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#0e7490" text-anchor="middle">_mysql_runner() + _pg_runner() · _scrub(msg, pwd)</text>
+  <text x="995" y="742" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">CONNECT_TIMEOUT=10  QUERY_TIMEOUT=15  MAX_ROWS=200</text>
+  <text x="995" y="756" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#1e3a5a" text-anchor="middle">SET SESSION TRANSACTION READ ONLY · SELECT/EXPLAIN/SHOW only</text>
+
+  <!-- NEW: api/servicenow.py -->
+  <rect x="806" y="776" width="378" height="90" fill="#0e0620" rx="8" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="995" y="797" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#a78bfa" text-anchor="middle">api/servicenow.py</text>
+  <line x1="816" y1="802" x2="1174" y2="802" stroke="#2e1065" stroke-width="1"/>
+  <text x="995" y="818" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#7c3aed" text-anchor="middle">_format_article_html() · POST to kb_knowledge table</text>
+  <text x="995" y="832" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#6d28d9" text-anchor="middle">Basic auth via httpx · Draft workflow_state · 2yr valid_to</text>
+  <text x="995" y="846" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#4c1d95" text-anchor="middle">password scrubbed · dev218436.service-now.com</text>
+  <text x="995" y="860" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#2e1065" text-anchor="middle">Returns sys_id · article number · article_url on success</text>
+
+  <!-- database.py + SQLite -->
+  <rect x="806" y="880" width="378" height="72" fill="#160e04" rx="8" stroke="#b45309" stroke-width="1.5"/>
+  <text x="995" y="901" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="middle">database.py — SQLite (aiosqlite)</text>
+  <text x="995" y="919" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#92400e" text-anchor="middle">save_session(state) · get_session(id) · get_sessions(user) · delete_session()</text>
+  <text x="995" y="935" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#78350f" text-anchor="middle">Volume: backend_data:/app  ·  Async pool  ·  JSON serialized TriageState</text>
+  <text x="995" y="948" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#78350f" text-anchor="middle">To deploy Python changes: docker cp file container:/app/ → docker compose restart backend</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- Cross-column arrows -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <!-- RunbookChat → POST /chat -->
+  <line x1="390" y1="590" x2="416" y2="338" stroke="#34d399" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ag)"/>
+
+  <!-- UploadPanel → POST /analyze -->
+  <line x1="390" y1="270" x2="416" y2="147" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ac)"/>
+
+  <!-- POST /analyze → api/triage.py -->
+  <line x1="784" y1="147" x2="806" y2="200" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ac)"/>
+
+  <!-- POST /chat → api/chat.py -->
+  <line x1="784" y1="279" x2="806" y2="580" stroke="#34d399" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ag)"/>
+
+  <!-- ConnectorPanel → POST /connector/ping -->
+  <line x1="390" y1="490" x2="416" y2="537" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ac)"/>
+
+  <!-- POST /connector/ping → api/connector.py -->
+  <line x1="784" y1="537" x2="806" y2="710" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ac)"/>
+
+  <!-- POST /servicenow → api/servicenow.py -->
+  <line x1="784" y1="758" x2="806" y2="800" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ap)"/>
+
+  <!-- TriageState ↔ LangGraph nodes -->
+  <line x1="784" y1="870" x2="806" y2="480" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ap)"/>
+
+  <!-- Footer -->
+  <rect x="0" y="980" width="1200" height="40" fill="#060b18"/>
+  <line x1="0" y1="980" x2="1200" y2="980" stroke="#0e2030" stroke-width="1"/>
+  <text x="600" y="1004" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#334155" text-anchor="middle">All LangGraph nodes are pure functions (state) → state  ·  DB Connector: read-only HITL SQL executor  ·  ServiceNow KB: draft article publisher  ·  DBA Copilot: floating SSE chat</text>
+</svg>

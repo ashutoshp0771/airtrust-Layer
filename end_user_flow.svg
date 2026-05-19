@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1020" width="1100" height="1020">
+  <defs>
+    <marker id="ac" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#22d3ee"/>
+    </marker>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="9 0,0 3.5,9 7" fill="#94a3b8"/>
+    </marker>
+    <marker id="av" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#334155"/>
+    </marker>
+    <marker id="ao" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#f59e0b"/>
+    </marker>
+    <marker id="ap" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#a78bfa"/>
+    </marker>
+    <linearGradient id="bggrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060b18"/>
+      <stop offset="100%" stop-color="#070d1e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="1020" fill="url(#bggrad)"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="1100" height="62" fill="#0a1020" rx="0"/>
+  <rect x="0" y="58" width="1100" height="2" fill="#0e7490" opacity="0.6"/>
+  <text x="550" y="29" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#f1f5f9" text-anchor="middle">DB Perf AI Agent — End User Flow</text>
+  <text x="550" y="50" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">DBA journey from first login to resolved incident — 10 steps including DB Connector (HITL), ServiceNow KB, and DBA Copilot</text>
+
+  <!-- Swimlane headers -->
+  <rect x="2" y="66" width="486" height="36" fill="#0c2233" rx="4"/>
+  <text x="245" y="89" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#22d3ee" text-anchor="middle">DBA / User</text>
+
+  <rect x="512" y="66" width="585" height="36" fill="#0e1a2e" rx="4"/>
+  <text x="804" y="89" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#64748b" text-anchor="middle">DB Perf Agent System</text>
+
+  <!-- Lane divider -->
+  <line x1="500" y1="66" x2="500" y2="1015" stroke="#1e3a4a" stroke-width="1.5" stroke-dasharray="6,5"/>
+
+  <!-- Step connector line (left edge) -->
+  <line x1="15" y1="120" x2="15" y2="990" stroke="#1e3a4a" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <!-- ═══ STEP 1: Login ═══ -->
+  <circle cx="15" cy="145" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="149" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">1</text>
+
+  <rect x="32" y="118" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="143" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">Open browser → dbperf.aieksops.com</text>
+  <text x="257" y="163" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Enter credentials: admin / dbperf2025 · dba / dba2025</text>
+
+  <line x1="482" y1="149" x2="512" y2="149" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <rect x="516" y="118" width="576" height="62" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="141" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">JWT authentication token issued</text>
+  <text x="804" y="161" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Dashboard shown with stats, recent sessions, pipeline overview</text>
+
+  <!-- ═══ STEP 2: Mode Toggle ═══ -->
+  <circle cx="15" cy="235" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="239" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">2</text>
+
+  <rect x="32" y="208" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="233" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">Select Analysis Mode in sidebar</text>
+  <rect x="90" y="248" width="120" height="20" fill="#431407" rx="10" stroke="#b45309" stroke-width="1"/>
+  <circle cx="103" cy="258" r="5" fill="#f59e0b"/>
+  <text x="155" y="262" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#fbbf24" text-anchor="middle">DEMO · Heuristic</text>
+  <text x="210" y="260" font-family="Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">or</text>
+  <rect x="240" y="248" width="130" height="20" fill="#052e16" rx="10" stroke="#059669" stroke-width="1"/>
+  <circle cx="253" cy="258" r="5" fill="#34d399"/>
+  <text x="310" y="262" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#34d399" text-anchor="middle">LIVE AI · GPT-4o</text>
+
+  <line x1="482" y1="239" x2="512" y2="239" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <rect x="516" y="208" width="576" height="62" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="231" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">Mode persisted to localStorage (dp:mode)</text>
+  <text x="804" y="251" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Controls: classifier path · runbook source · AI Chat availability</text>
+
+  <!-- ═══ STEP 3: Upload ═══ -->
+  <circle cx="15" cy="325" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="329" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">3</text>
+
+  <rect x="32" y="298" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="320" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">New Triage → Upload / Select Sample</text>
+  <text x="257" y="342" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">RDS PI  ·  Oracle AWR  ·  pg_stat_statements  ·  SQL Server QS  ·  MySQL slow log</text>
+
+  <line x1="482" y1="329" x2="512" y2="329" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <rect x="516" y="298" width="576" height="62" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="320" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">Auto-detect input format + DB engine</text>
+  <text x="804" y="342" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">7 engines: Aurora MySQL/PG · RDS MySQL/PG/Oracle/SQL Server/MariaDB</text>
+
+  <!-- ═══ STEP 4: Pipeline ═══ -->
+  <circle cx="15" cy="415" r="11" fill="#0f766e" stroke="#14b8a6" stroke-width="1"/>
+  <text x="15" y="419" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">4</text>
+
+  <rect x="32" y="388" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="412" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">Click Run AI Triage Analysis</text>
+  <text x="257" y="432" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Watch real-time SSE streaming progress panel</text>
+
+  <line x1="482" y1="419" x2="512" y2="419" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <!-- Pipeline 3-stage box -->
+  <rect x="516" y="388" width="576" height="62" fill="#071a15" rx="8" stroke="#0f766e" stroke-width="1.5"/>
+  <rect x="527" y="398" width="156" height="42" fill="#0d2e25" rx="6" stroke="#14b8a6" stroke-width="1"/>
+  <text x="605" y="416" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">Parser</text>
+  <text x="605" y="432" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">extract + normalize</text>
+  <text x="694" y="421" font-family="Arial,sans-serif" font-size="18" fill="#0f766e">→</text>
+  <rect x="706" y="398" width="174" height="42" fill="#0d2e25" rx="6" stroke="#14b8a6" stroke-width="1"/>
+  <text x="793" y="416" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">Classifier</text>
+  <text x="793" y="432" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">root cause + severity</text>
+  <text x="891" y="421" font-family="Arial,sans-serif" font-size="18" fill="#0f766e">→</text>
+  <rect x="903" y="398" width="176" height="42" fill="#0d2e25" rx="6" stroke="#14b8a6" stroke-width="1"/>
+  <text x="991" y="416" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#5eead4" text-anchor="middle">Runbook</text>
+  <text x="991" y="432" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#2dd4bf" text-anchor="middle">steps + comm templates</text>
+
+  <!-- ═══ STEP 5: Results ═══ -->
+  <circle cx="15" cy="505" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="509" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">5</text>
+
+  <rect x="32" y="478" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="502" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">View Query Classification Table</text>
+  <text x="257" y="522" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Click any query row to open its runbook</text>
+
+  <line x1="516" y1="509" x2="482" y2="509" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="516" y="478" width="576" height="62" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="500" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">Table: Rank · SQL snippet · DB time % · Severity badge</text>
+  <text x="804" y="520" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Root cause chips: missing_index · lock_contention · vacuum_bloat ···</text>
+
+  <!-- ═══ STEP 6: Runbook (split Demo/Live) ═══ -->
+  <circle cx="15" cy="595" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="599" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">6</text>
+
+  <!-- Demo sub-box -->
+  <rect x="32" y="568" width="212" height="62" fill="#1a0e04" rx="8" stroke="#b45309" stroke-width="1.5"/>
+  <text x="138" y="590" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="middle">DEMO Mode</text>
+  <text x="138" y="608" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">Runbook Steps tab</text>
+  <text x="138" y="622" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#92400e" text-anchor="middle">AWS tool badges shown</text>
+
+  <!-- Live sub-box -->
+  <rect x="270" y="568" width="212" height="62" fill="#021a0e" rx="8" stroke="#059669" stroke-width="1.5"/>
+  <text x="376" y="590" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">LIVE Mode</text>
+  <text x="376" y="608" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#065f46" text-anchor="middle">AI Chat tab → type question</text>
+  <text x="376" y="622" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#047857" text-anchor="middle">GPT-4o streams answer</text>
+
+  <line x1="482" y1="599" x2="512" y2="599" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <rect x="516" y="568" width="576" height="62" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="590" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">Demo: Curated steps w/ PI / CloudWatch / Enhanced Monitoring</text>
+  <text x="804" y="610" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Live: GPT-4o streams with engine-specific SQL, AWS console paths</text>
+
+  <!-- ═══ STEP 7: DB Connector ═══ -->
+  <circle cx="15" cy="750" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="754" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">7</text>
+
+  <!-- DBA side -->
+  <rect x="32" y="720" width="450" height="62" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="742" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0" text-anchor="middle">Optional: Connect DB Connector</text>
+  <!-- Two sub-boxes inside -->
+  <rect x="40" y="749" width="200" height="24" fill="#061420" rx="4" stroke="#0e4d6b" stroke-width="1"/>
+  <text x="140" y="765" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#22d3ee" text-anchor="middle">Enter host/port/db/user/pass</text>
+  <rect x="252" y="749" width="222" height="24" fill="#061420" rx="4" stroke="#0e4d6b" stroke-width="1"/>
+  <text x="363" y="762" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#0e7490" text-anchor="middle">Credentials held in browser memory only</text>
+  <text x="363" y="773" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="9" fill="#334155" text-anchor="middle">Never stored to disk or server</text>
+
+  <line x1="482" y1="751" x2="512" y2="751" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#ac)"/>
+
+  <!-- System side -->
+  <rect x="516" y="720" width="576" height="62" fill="#061420" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="804" y="742" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">POST /api/connector/ping — test connectivity</text>
+  <text x="804" y="758" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#0e7490" text-anchor="middle">Multi-layer read-only: SET SESSION READ ONLY + SQL allowlist/blocklist</text>
+  <text x="804" y="774" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">MySQL · PostgreSQL · MariaDB  ·  CONNECT_TIMEOUT=10s</text>
+
+  <!-- ═══ STEP 8: HITL SQL Execution ═══ -->
+  <circle cx="15" cy="843" r="11" fill="#b45309" stroke="#f59e0b" stroke-width="1"/>
+  <text x="15" y="847" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">8</text>
+
+  <!-- DBA side -->
+  <rect x="32" y="816" width="450" height="62" fill="#1a0e04" rx="8" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="257" y="836" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fbbf24" text-anchor="middle">Click Run on any runbook step SQL</text>
+  <text x="257" y="853" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#92400e" text-anchor="middle">Review: target DB + SQL shown in HITL modal</text>
+  <text x="257" y="869" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#78350f" text-anchor="middle">Click Confirm &amp; Run to proceed · Cancel to abort</text>
+
+  <line x1="482" y1="847" x2="512" y2="847" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#ao)"/>
+
+  <!-- System side -->
+  <rect x="516" y="816" width="576" height="62" fill="#120900" rx="8" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="804" y="836" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#fbbf24" text-anchor="middle">POST /api/connector/execute — read-only enforced</text>
+  <text x="804" y="853" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#92400e" text-anchor="middle">Inline results table (max 200 rows)</text>
+  <text x="804" y="869" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#78350f" text-anchor="middle">SELECT/EXPLAIN/SHOW only · 15s timeout · _validate_sql() blocklist</text>
+
+  <!-- ═══ STEP 9: ServiceNow KB ═══ -->
+  <circle cx="15" cy="938" r="11" fill="#6d28d9" stroke="#a78bfa" stroke-width="1"/>
+  <text x="15" y="942" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">9</text>
+
+  <!-- DBA side -->
+  <rect x="32" y="911" width="450" height="62" fill="#12082a" rx="8" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="257" y="933" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#c4b5fd" text-anchor="middle">Click Post to ServiceNow button</text>
+  <text x="257" y="950" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#7c3aed" text-anchor="middle">Enter: instance / username / password</text>
+  <text x="257" y="965" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#4c1d95" text-anchor="middle">Payload pre-filled from active session runbook</text>
+
+  <line x1="482" y1="942" x2="512" y2="942" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#ap)"/>
+
+  <!-- System side -->
+  <rect x="516" y="911" width="576" height="62" fill="#0e0620" rx="8" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="804" y="933" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#c4b5fd" text-anchor="middle">POST /api/servicenow/publish-kb</text>
+  <text x="804" y="950" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#7c3aed" text-anchor="middle">Creates draft KB article at dev218436.service-now.com</text>
+  <text x="804" y="965" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#4c1d95" text-anchor="middle">DBA reviews and publishes from Knowledge Base module</text>
+
+  <!-- ═══ STEP 10: Comm Templates (was Step 7) ═══ -->
+  <circle cx="15" cy="998" r="11" fill="#0891b2" stroke="#22d3ee" stroke-width="1"/>
+  <text x="15" y="1002" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">10</text>
+
+  <!-- Note: step 10 row sits at bottom, footer moved to y=980 will overlap so we compress slightly -->
+  <!-- DBA side (compact) -->
+  <!-- We only render the step number circle at y=998; the full boxes would extend past canvas -->
+  <!-- Instead, render step 10 at y=985 area since canvas is 1020 -->
+  <!-- Re-position step 10: circle at y=998 radius 11, box from y=971 to y=1010 -->
+  <rect x="32" y="971" width="450" height="40" fill="#091c2e" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="257" y="988" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">View Communication Templates</text>
+  <text x="257" y="1005" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Copy diagnostic SQL · Share report with team or stakeholders</text>
+
+  <line x1="516" y1="991" x2="482" y2="991" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="516" y="971" width="576" height="40" fill="#0a1525" rx="8" stroke="#1e3a5a" stroke-width="1.5"/>
+  <text x="804" y="988" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#e2e8f0" text-anchor="middle">4 Templates: Executive · Ops Alert · DBA Runbook · Technical</text>
+  <text x="804" y="1004" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">Pre-filled: db_name · severity · root causes · immediate actions</text>
+
+  <!-- Footer -->
+  <rect x="0" y="1012" width="1100" height="8" fill="#070c1a"/>
+  <line x1="0" y1="1012" x2="1100" y2="1012" stroke="#0e2030" stroke-width="1"/>
+  <text x="550" y="1008" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="10" fill="#334155" text-anchor="middle">dbperf.aieksops.com  ·  FastAPI + LangGraph + GPT-4o  ·  DB Connector (HITL) · ServiceNow KB · DBA Copilot  ·  EC2 t3.large us-west-1</text>
+</svg>
